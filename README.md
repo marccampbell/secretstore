@@ -1,4 +1,4 @@
-# kube-vault
+[![Go Report Card](https://goreportcard.com/badge/github.com/marccampbell/kube-vault)](https://goreportcard.com/report/github.com/marccampbell/kube-vault)
 
 # Quick Start
 ```bash
