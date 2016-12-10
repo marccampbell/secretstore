@@ -3,5 +3,13 @@ language: go
 go:
   - 1.7.x
 
+cache:
+directories:
+  - ${HOME}/gopath
+
+before_install:
+  - go get -u github.com/kardianos/govendor
+  - go get -u github.com/mattn/goveralls
+
 script:
   - make test
