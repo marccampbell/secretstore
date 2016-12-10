@@ -1,4 +1,4 @@
-[![Go Report Card](https://goreportcard.com/badge/github.com/marccampbell/kube-vault)](https://goreportcard.com/report/github.com/marccampbell/kube-vault)
+[![Build Status](https://travis-ci.org/marccampbell/kube-vault.svg?branch=master)](https://travis-ci.org/marccampbell/kube-vault) [![Go Report Card](https://goreportcard.com/badge/github.com/marccampbell/kube-vault)](https://goreportcard.com/report/github.com/marccampbell/kube-vault)
 
 # Quick Start
 ```bash
