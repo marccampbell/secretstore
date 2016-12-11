@@ -13,46 +13,45 @@ import (
 )
 
 var (
-	yamlsEnv string
+	k8sEnv string
 )
 
-var yamlsCmd = &cobra.Command{
-	Use:   "yamls",
-	Short: "Generates secret yamls for all secrets in an environment",
-	Long:  `Generates all of the secret yamls for an environment`,
+var k8sCmd = &cobra.Command{
+	Use:   "k8s",
+	Short: "Generates kubernetes yaml for all secrets in an environment",
+	Long:  `Generates all of the kubernetes yaml for an environment`,
 }
 
 func init() {
 	viper.SetEnvPrefix("kubevault")
 	viper.AutomaticEnv()
 
-	yamlsCmd.PersistentFlags().StringVarP(&yamlsEnv, "env", "e", "", "The environment to generate secrets for.")
+	k8sCmd.PersistentFlags().StringVarP(&k8sEnv, "env", "e", "", "The environment to generate secrets for.")
 
-	yamlsCmd.RunE = yamls
+	k8sCmd.RunE = k8s
 }
 
-// yamls is the implementation of the yamls command.
-func yamls(cmd *cobra.Command, args []string) error {
-	if err := InitializeConfig(yamlsCmd); err != nil {
+// k8s is the implementation of the k8s command.
+func k8s(cmd *cobra.Command, args []string) error {
+	if err := InitializeConfig(k8sCmd); err != nil {
 		return err
 	}
 
-	//yamls := make([]string, 0, 0)
-	env, err := config.GetEnvironment(yamlsEnv)
+	env, err := config.GetEnvironment(k8sEnv)
 	if err != nil {
 		fmt.Printf("%#v\n", err)
 		os.Exit(1)
 		return nil
 	}
 	if env == nil {
-		fmt.Printf("Environment %q not found\n", yamlsEnv)
+		fmt.Printf("Environment %q not found\n", k8sEnv)
 		os.Exit(1)
 		return nil
 	}
 
 	secrets, err := secret.ListSecretsInPath(*env.VaultAddress, *env.VaultToken, env.Path)
 	if err != nil {
-		fmt.Printf("Environment %q not found\n", yamlsEnv)
+		fmt.Printf("%#v\n", err)
 		os.Exit(1)
 		return nil
 	}

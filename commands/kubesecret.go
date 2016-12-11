@@ -37,7 +37,7 @@ func Execute() {
 func AddCommands() {
 	KubeVaultCmd.AddCommand(initCmd)
 	KubeVaultCmd.AddCommand(envCmd)
-	KubeVaultCmd.AddCommand(yamlsCmd)
+	KubeVaultCmd.AddCommand(k8sCmd)
 }
 
 // InitializeConfig initializes the config environment with defaults.
