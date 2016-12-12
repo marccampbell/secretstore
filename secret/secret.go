@@ -6,7 +6,7 @@ import (
 	"path"
 	"strings"
 
-	"github.com/marccampbell/kube-vault/log"
+	"github.com/marccampbell/secretstore/log"
 
 	vault "github.com/hashicorp/vault/api"
 )

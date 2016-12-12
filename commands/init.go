@@ -6,7 +6,7 @@ import (
 	"os"
 	"strings"
 
-	"github.com/marccampbell/kube-vault/config"
+	"github.com/marccampbell/secretstore/config"
 
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
@@ -18,12 +18,12 @@ var (
 )
 var initCmd = &cobra.Command{
 	Use:   "init",
-	Short: "Initializes the kube-vault environment",
-	Long:  `Initialize the kube-vault environment by connecting to vault.`,
+	Short: "Initializes the secretstore environment",
+	Long:  `Initialize the secretstore environment by connecting to vault.`,
 }
 
 func init() {
-	viper.SetEnvPrefix("kubevault")
+	viper.SetEnvPrefix("secretstore")
 	viper.AutomaticEnv()
 
 	initCmd.PersistentFlags().StringVarP(&initVaultAddr, "vault-address", "a", "", "Vault address")
@@ -40,7 +40,7 @@ func initI(cmd *cobra.Command, args []string) error {
 
 	// If keys already exist, we probably don't want to actually init, warn before proceeding
 	if config.Exists() {
-		fmt.Println("Config already exists. Cowardly refusing to overwrite it. Delete ~/.kube-vault to re-init.")
+		fmt.Println("Config already exists. Cowardly refusing to overwrite it. Delete ~/.secretstore to re-init.")
 		os.Exit(1)
 		return nil
 	}

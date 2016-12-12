@@ -5,7 +5,7 @@ import (
 	"runtime"
 	"time"
 
-	"github.com/marccampbell/kube-vault/commands"
+	"github.com/marccampbell/secretstore/commands"
 )
 
 func init() {

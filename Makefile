@@ -1,7 +1,7 @@
 .PHONY: clean install test build all
 
 clean:
-	rm -f ./bin/kube-vault
+	rm -f ./bin/secretstore
 
 install:
 	govendor install
@@ -11,6 +11,6 @@ test:
 
 build:
 	mkdir -p ./bin
-	govendor build -o ./bin/kube-vault .
+	govendor build -o ./bin/secretstore .
 
 all: build test

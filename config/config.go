@@ -7,7 +7,7 @@ import (
 	"os/user"
 	"path"
 
-	"github.com/marccampbell/kube-vault/log"
+	"github.com/marccampbell/secretstore/log"
 
 	"github.com/BurntSushi/toml"
 )
@@ -30,7 +30,7 @@ func Exists() bool {
 		return false
 	}
 
-	configPath := path.Join(usr.HomeDir, ".kube-vault", "config.toml")
+	configPath := path.Join(usr.HomeDir, ".secretstore", "config.toml")
 	if _, err := os.Stat(configPath); os.IsNotExist(err) {
 		return false
 	}
@@ -46,7 +46,7 @@ func (c *Config) Save() error {
 		return err
 	}
 
-	configPath := path.Join(usr.HomeDir, ".kube-vault")
+	configPath := path.Join(usr.HomeDir, ".secretstore")
 	if err := os.MkdirAll(configPath, 0755); err != nil {
 		log.Error(err)
 		return err
@@ -75,7 +75,7 @@ func get() (*Config, error) {
 		return nil, err
 	}
 
-	configPath := path.Join(usr.HomeDir, ".kube-vault", "config.toml")
+	configPath := path.Join(usr.HomeDir, ".secretstore", "config.toml")
 
 	cfgData, err := ioutil.ReadFile(configPath)
 	if err != nil {

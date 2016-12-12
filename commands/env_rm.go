@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/marccampbell/kube-vault/config"
+	"github.com/marccampbell/secretstore/config"
 
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
@@ -17,11 +17,11 @@ var (
 var envRmCmd = &cobra.Command{
 	Use:   "rm",
 	Short: "Removes a env",
-	Long:  `Removes a env that is managed with kube-vault.`,
+	Long:  `Removes a env that is managed with secretstore.`,
 }
 
 func init() {
-	viper.SetEnvPrefix("kubevault")
+	viper.SetEnvPrefix("secretstore")
 	viper.AutomaticEnv()
 
 	envRmCmd.PersistentFlags().StringVarP(&envRmName, "name", "n", "", "Name of the env")

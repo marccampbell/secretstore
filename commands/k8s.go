@@ -5,8 +5,8 @@ import (
 	"os"
 	"strings"
 
-	"github.com/marccampbell/kube-vault/config"
-	"github.com/marccampbell/kube-vault/secret"
+	"github.com/marccampbell/secretstore/config"
+	"github.com/marccampbell/secretstore/secret"
 
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
@@ -23,7 +23,7 @@ var k8sCmd = &cobra.Command{
 }
 
 func init() {
-	viper.SetEnvPrefix("kubevault")
+	viper.SetEnvPrefix("secretstore")
 	viper.AutomaticEnv()
 
 	k8sCmd.PersistentFlags().StringVarP(&k8sEnv, "env", "e", "", "The environment to generate secrets for.")

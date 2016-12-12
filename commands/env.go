@@ -8,11 +8,11 @@ import (
 var envCmd = &cobra.Command{
 	Use:   "env",
 	Short: "Manages environments",
-	Long:  `kube-vault can be used to manage multiple environments`,
+	Long:  `secretstore can be used to manage multiple environments`,
 }
 
 func init() {
-	viper.SetEnvPrefix("kubevault")
+	viper.SetEnvPrefix("secretstore")
 	viper.AutomaticEnv()
 
 	envCmd.AddCommand(envAddCmd)

@@ -7,11 +7,11 @@ import (
 	"github.com/spf13/viper"
 )
 
-// KubeVaultCmd is the main (root) command for the CLI.
-var KubeVaultCmd = &cobra.Command{
-	Use:   "kube-vault",
-	Short: "kube-vault helps manage Kubernetes Secrets in multiple environments by syncing from vault",
-	Long:  "kube-vault manages Kubernetes Secrets in multiple environments. For more details, visit github.com/marccampbell/kube-vault",
+// SecretStoreCmd is the main (root) command for the CLI.
+var SecretStoreCmd = &cobra.Command{
+	Use:   "secretstore",
+	Short: "secretstore helps manage Kubernetes Secrets in multiple environments by syncing from vault",
+	Long:  "secretstore manages Kubernetes Secrets in multiple environments. For more details, visit github.com/marccampbell/secretstore",
 
 	RunE: func(cmd *cobra.Command, args []string) error {
 		if err := InitializeConfig(); err != nil {
@@ -24,24 +24,24 @@ var KubeVaultCmd = &cobra.Command{
 	},
 }
 
-// Execute adds all child commands to the room command KubeVaultCmd and sets flags
+// Execute adds all child commands to the room command SecretStoreCmd and sets flags
 func Execute() {
 	AddCommands()
 
-	if _, err := KubeVaultCmd.ExecuteC(); err != nil {
+	if _, err := SecretStoreCmd.ExecuteC(); err != nil {
 		os.Exit(-1)
 	}
 }
 
-// AddCommands will add all child commands to the KubeVaultCmd
+// AddCommands will add all child commands to the SecretStoreCmd
 func AddCommands() {
-	KubeVaultCmd.AddCommand(initCmd)
-	KubeVaultCmd.AddCommand(envCmd)
-	KubeVaultCmd.AddCommand(k8sCmd)
+	SecretStoreCmd.AddCommand(initCmd)
+	SecretStoreCmd.AddCommand(envCmd)
+	SecretStoreCmd.AddCommand(k8sCmd)
 }
 
 // InitializeConfig initializes the config environment with defaults.
 func InitializeConfig(subCmdVs ...*cobra.Command) error {
-	viper.SetEnvPrefix("kubevault")
+	viper.SetEnvPrefix("secretstore")
 	return nil
 }

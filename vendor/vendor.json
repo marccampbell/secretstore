@@ -279,5 +279,5 @@
 			"revisionTime": "2016-09-28T15:37:09Z"
 		}
 	],
-	"rootPath": "github.com/marccampbell/kube-vault"
+	"rootPath": "github.com/marccampbell/secretstore"
 }

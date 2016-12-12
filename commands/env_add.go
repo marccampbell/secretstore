@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/marccampbell/kube-vault/config"
+	"github.com/marccampbell/secretstore/config"
 
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
@@ -21,11 +21,11 @@ var (
 var envAddCmd = &cobra.Command{
 	Use:   "add",
 	Short: "Adds a new environment",
-	Long:  `Adds a new environment that can be managed with kube-vault.`,
+	Long:  `Adds a new environment that can be managed with secretstore.`,
 }
 
 func init() {
-	viper.SetEnvPrefix("kubevault")
+	viper.SetEnvPrefix("secretstore")
 	viper.AutomaticEnv()
 
 	envAddCmd.PersistentFlags().StringVarP(&envAddName, "name", "n", "", "Name of the env")
